@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+{% block title %}
+{{title}}
+{% endblock %}
+
+
+{% block content %}
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+
+<div class="main">
+
+Are you sure you want to delete {{ item }}?
+<div class="choice">
+<a class="normallink" id="delete" href="">Delete</a>
+<a class="normallink" href="{{ url_for('.make_catalog') }}">Cancel</a>
+</div>
+<div id="result">
+</div>
+
+</div>
+
+<script>
+$("#delete").click(function(){
+    event.preventDefault();
+    executeDelete();
+});
+function executeDelete() {
+    $.ajax({
+        type: 'POST',
+        url: "/delete",
+        dataType: "json",
+        data: "itemname={{ item }}",
+        success: function(result) {
+            $("#result").html(result['html']);
+            if(result['status'] === "SUCCESS"){
+                window.location.href = "{{ url_for('.make_catalog') }}"
+            }
+            // disable delete button
+            $("#delete").click(function(){});
+        },
+        error: function(result) {
+            $("#result").html("ERROR");
+            // disable delete button
+            $("#delete").click(function(){});
+        }
+    });
+};
+</script>
+{% endblock %}

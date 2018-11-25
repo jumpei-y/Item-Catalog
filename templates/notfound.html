@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+{% block title %}
+{{title}}
+{% endblock %}
+
+
+{% block content %}
+<div class="error">
+Sorry. We couldn't find what you were looking for.
+<a href={{url_for('.make_catalog')}}>return home</a>
+</div>
+{% endblock %}

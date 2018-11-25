@@ -1,0 +1,19 @@
+<html>
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+<title>{% block title %}Layout{% endblock %}</title>
+<body>
+<div class="navbar">
+    <div class="col-md-2 text-center navbutton"><a href="{{ url_for('.make_catalog') }}">Catalog Home</a></div>
+    <div class="col-md-offset-1"></div>
+    <div class="col-md-3 text-right navbutton" id="specialbutton"><h1 class="storename">Music List</h1></div>
+    <div class="col-md-offset-4"></div>
+    <div class="col-md-1 text-center navbutton"><a href="{{ logged }}">{{ logact }}</a></div>
+	<div class="col-md-1 text-center navbutton"><a href="{{ url_for('.endpoint') }}">JSON</a></div>
+</div>
+{% block content %}
+{% endblock %}
+</body>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</html>

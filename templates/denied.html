@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+{% block title %}
+{{title}}
+{% endblock %}
+
+
+{% block content %}
+<div class="error">
+Sorry. You tried to modify an item you don't own.
+<a href={{url_for('.make_catalog')}}>return home</a>
+</div>
+{% endblock %}

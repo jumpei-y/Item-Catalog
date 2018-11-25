@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+{% block title %}
+{{title}}
+{% endblock %}
+
+
+{% block content %}
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+{{msg}}
+
+{% if msg == "SUCCESS" %}
+<script>
+window.location.href = "{{ url_for('.make_catalog') }}"
+</script>
+{% endif %}
+
+<a id="logout" href="">Force logout?</a>
+<div id="result"></div>
+
+<script>
+$("#logout").click(function(){
+    event.preventDefault();
+    tryForce();
+});
+function tryForce(){
+    $.ajax({
+        type: 'POST',
+        url: "{{ url_for('.force_logout') }}",
+        dataType: "html",
+        data: "msg=fromlogout",
+        success: function(result) {
+            $("#result").html(result);
+
+            if(result == "SUCCESS"){
+                // redirect
+                window.location.href = "{{ url_for('.make_catalog') }}"
+            } else{
+                console.log(result)
+                $("#result").html("Error.");
+                // disable logout button
+                $("#logout").click(function(){});
+            }
+        },
+        error: function(result) {
+            $("#result").html("ERROR");
+            // disable logout button
+            $("#logout").click(function(){});
+        }
+    });
+};
+</script>
+{% endblock %}

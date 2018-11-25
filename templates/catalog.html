@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+{% block title %}
+{{title}}
+{% endblock %}
+
+
+{% block content %}
+<div class="main">
+    <div id="categories">
+    <h1>Categories</h1>
+    {% for i in cat_list %}
+    <a href={{ url_for('.make_category', catname=i) }}>
+    {{ i }}
+    </a><br/>
+    {% endfor %}
+    </div>
+
+
+    <div id="items">
+    <h1>Items</h1>
+    {% if create %}
+    <a id="createbutton" href={{create}}>Create item</a><br/>
+    {% endif %}
+
+    <br/>
+    {% for n in item_list %}
+    <a href={{ url_for('.make_item', catname=n[1], itemname=n[0]) }}>
+    {{ n[0] }} ({{ n[1] }})
+    </a><br/>
+    {% endfor %}
+    </div>
+</div>
+{% endblock %}

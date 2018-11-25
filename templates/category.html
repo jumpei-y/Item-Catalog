@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+{% block title %}
+{{title}}
+{% endblock %}
+
+
+{% block content %}
+<div class="main">
+    <h1>{{ title }}</h1>
+    {% for i in catlist%}
+    <a href={{url_for('make_item', catname=title, itemname=i)}}>{{i}}</a><br/>
+    {% endfor %}
+</div>
+{% endblock %}

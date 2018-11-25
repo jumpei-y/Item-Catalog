@@ -1,0 +1,56 @@
+.navbar {
+    background: #cff29b;
+}
+
+.nav-left{
+    align: left;
+}
+
+.nav-center{
+    align: center;
+}
+
+.nav-right{
+    align: right;
+}
+
+.navbutton {
+    display: inline;
+    background: #9af1ec;
+    color: #9af1ec;
+    padding: 10;
+    text-decoration: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+h1 {
+    color: #666699;
+}
+
+.main {
+    text-align: center;
+}
+
+.storename{
+    display:inline;
+    color: #1f1f2e;
+}
+
+.create-area {
+    width: 100px;
+}
+
+#create_form {
+    display: inline-block;
+}
+
+#specialbutton{
+    background: none;
+}
+
+#createbutton{
+    text-decoration: underline;
+}
